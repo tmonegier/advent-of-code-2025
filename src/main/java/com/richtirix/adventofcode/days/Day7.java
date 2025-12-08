@@ -15,7 +15,7 @@ public class Day7 implements DaySolution {
     private final List<String> lines;
     private final long[] beams;
     public Day7() throws URISyntaxException, IOException {
-        var path = Path.of(Objects.requireNonNull(Day7.class.getClassLoader().getResource("day7")).toURI());
+        var path = Path.of(Objects.requireNonNull(Day8.class.getClassLoader().getResource("day7")).toURI());
         lines= Files.readAllLines(path);
         beams = new long[lines.size()];
     }
@@ -33,13 +33,13 @@ public class Day7 implements DaySolution {
             for (int j = 0; j < beams.length; j++) {
                 if (beams[j] > 0 && currentLine.charAt(j) == '^') {
                     res++;
-                    beams[j] = 0;
                     if (j > 0) {
-                        beams[j - 1] = 1;
+                        beams[j - 1] += beams[j];
                     }
                     if (j < beams.length - 1) {
-                        beams[j + 1] = 1 ;
+                        beams[j + 1] += beams[j];
                     }
+                    beams[j] = 0;
                 }
 
             }
@@ -49,21 +49,7 @@ public class Day7 implements DaySolution {
 
     @Override
     public Long solvePart2() {
-        init();
-        for (String currentLine : lines) {
-            for (int j = 0; j < beams.length; j++) {
-                if (beams[j] > 0 && currentLine.charAt(j) == '^') {
-                    if (j > 0) {
-                        beams[j - 1] = beams[j]+beams[j - 1];
-                    }
-                    if (j < beams.length - 1) {
-                        beams[j + 1] = beams[j]+beams[j + 1];
-                    }
-                    beams[j] = 0;
-                }
-
-            }
-        }
+        solvePart1();
         return Arrays.stream(beams).reduce(Long::sum).orElse(0);
     }
 
