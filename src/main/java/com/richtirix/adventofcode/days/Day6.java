@@ -1,16 +1,17 @@
 package com.richtirix.adventofcode.days;
 
-import com.richtirix.adventofcode.DaySolution;
+import com.richtirix.adventofcode.AbstractDay;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.BiFunction;
 import java.util.regex.Pattern;
 
-public class Day6 implements DaySolution {
+public class Day6 extends AbstractDay {
 
     private static final Pattern FUNCTION_PATTERN = Pattern.compile("[*+]");
     private static final Pattern NUMBER_PATTERN = Pattern.compile("\\d+");
@@ -21,15 +22,13 @@ public class Day6 implements DaySolution {
         }
     };
 
-    private final List<String> lines;
     private final int functionsIndex;
     private final String functionsString;
     private final List<Long> results = new ArrayList<>();
     private final List<MathOperation> functions = new ArrayList<>();
 
     public Day6() throws URISyntaxException, IOException {
-        var path = Path.of(Objects.requireNonNull(Day6.class.getClassLoader().getResource("day6")).toURI());
-        this.lines =  Files.readAllLines(path);
+        super("day6");
         functionsIndex = lines.size()-1;
         functionsString = lines.get(functionsIndex);
     }

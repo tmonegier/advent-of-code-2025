@@ -10,11 +10,12 @@ import java.util.List;
 
 public class Main {
     private static final List<DaySolution> daySolutions;
+    private static final long START = System.nanoTime();
     static {
         try {
             daySolutions = List.of(
-                new Day6(),
                 new Day7(),
+                new Day6(),
                 new Day8()
             );
         } catch (URISyntaxException | IOException e) {
@@ -23,8 +24,13 @@ public class Main {
     }
 
     static void main(String[] args) {
-        IO.println(getDay(Integer.parseInt(args[0])).solvePart1());
-        IO.println(getDay(Integer.parseInt(args[0])).solvePart2());
+        for (String arg : args) {
+            IO.println(getDay(Integer.parseInt(arg)).solvePart1());
+            IO.println(getDay(Integer.parseInt(arg)).solvePart2());
+        }
+        long end = System.nanoTime();
+        long elapsedMillis = (end - START) / 1_000_000;
+        System.out.println("Execution time: " + elapsedMillis + " ms");
     }
 
     private static DaySolution getDay(int day) {

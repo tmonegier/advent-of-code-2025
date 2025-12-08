@@ -1,26 +1,22 @@
 package com.richtirix.adventofcode.days;
 
-import com.richtirix.adventofcode.DaySolution;
+import com.richtirix.adventofcode.AbstractDay;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.*;
 import java.util.regex.Pattern;
 
 import static java.lang.Math.pow;
 
-public class Day8 implements DaySolution {
+public class Day8 extends AbstractDay {
 
-    private final List<String> lines;
     private final Pattern pointPattern = Pattern.compile("(?<x>\\d*),(?<y>\\d*),(?<z>\\d*)");
     private final List<Circuit> circuits = new ArrayList<>();
     private final List<Distance> sortedDistances;
 
     public Day8() throws URISyntaxException, IOException {
-        var path = Path.of(Objects.requireNonNull(Day8.class.getClassLoader().getResource("day8")).toURI());
-        lines = Files.readAllLines(path);
+        super("day8");
         List<Distance> distances = new ArrayList<>();
         for (int i = 0; i < lines.size(); i++) {
             String startLinePoint = lines.get(i);

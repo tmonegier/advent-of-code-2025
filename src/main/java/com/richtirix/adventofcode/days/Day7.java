@@ -1,22 +1,15 @@
 package com.richtirix.adventofcode.days;
 
-import com.richtirix.adventofcode.DaySolution;
+import com.richtirix.adventofcode.AbstractDay;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
 
-public class Day7 implements DaySolution {
+public class Day7 extends AbstractDay {
 
-    private final List<String> lines;
     private final long[] beams;
-    public Day7() throws URISyntaxException, IOException {
-        var path = Path.of(Objects.requireNonNull(Day8.class.getClassLoader().getResource("day7")).toURI());
-        lines= Files.readAllLines(path);
+    public Day7() throws IOException {
+        super("day7");
         beams = new long[lines.size()];
     }
 
