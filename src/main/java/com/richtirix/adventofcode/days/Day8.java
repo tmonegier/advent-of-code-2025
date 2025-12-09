@@ -44,7 +44,7 @@ public class Day8 extends AbstractDay {
     @Override
     public Long solvePart1() {
         init();
-        int MINIMUM_DISTANCES_ARRAY_LENGTH = 10;
+        int MINIMUM_DISTANCES_ARRAY_LENGTH = 1000;
         sortedDistances.stream().limit(MINIMUM_DISTANCES_ARRAY_LENGTH).sorted(Comparator.comparingLong(d -> d.distanceSquared)).forEach(
             this::createCircuits
         );
