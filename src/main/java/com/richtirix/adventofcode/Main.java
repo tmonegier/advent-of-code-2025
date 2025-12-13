@@ -1,9 +1,6 @@
 package com.richtirix.adventofcode;
 
-import com.richtirix.adventofcode.days.Day6;
-import com.richtirix.adventofcode.days.Day7;
-import com.richtirix.adventofcode.days.Day8;
-import com.richtirix.adventofcode.days.Day9;
+import com.richtirix.adventofcode.days.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -18,7 +15,9 @@ public class Main {
                 new Day7(),
                 new Day6(),
                 new Day8(),
-                new Day9()
+                new Day9(),
+                new Day10(),
+                new Day11()
             );
         } catch (URISyntaxException | IOException e) {
             throw new RuntimeException(e);
